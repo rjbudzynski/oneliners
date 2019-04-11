@@ -14,6 +14,12 @@
 - it's an exercise in coding the exact same (client-side) functionality in different languages
 - it's simple and easy to understand
 
+## Dependencies:
+
+- python: python3.6, requests module (pip3 install requests, or apt install python3-requests)
+- go: just the standard golang environment, I used go1.12.2
+- javascript: node.js, node-fetch (npm install node-fetch -g)
+
 ## First observations:
 
 - python: the most terse and easy to understand code
@@ -23,5 +29,9 @@
 ## Notes:
 
 - the compiled executable probably shouldn't be here, but not everyone has a Go build environment handy -- although it took me about three minutes to get one on my laptop.
+- at least on my distro, npm modules installed with -g are not getting found by default. Solved by adding `export NODE_PATH=/usr/local/lib/node_modules` to my .bashrc
+- golang's `math/rand` is tricky: by default it seeds the pseudorandom source deterministically. If you want "random" results, you must seed it yourself. In most prng libs it's the other way around.
+
+----
 
 comments to: Robert@Budzynski.xyz
