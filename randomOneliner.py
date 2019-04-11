@@ -4,7 +4,8 @@ import requests
 import random
 from sys import stderr
 
-urlBase = 'https://budzynski.xyz/oneliners/'
+# urlBase = 'https://budzynski.xyz/oneliners/'
+urlBase = 'https://raw.githubusercontent.com/rjbudzynski/oneliners/master/data/'
 
 try:
     r = requests.get(urlBase + 'len', timeout=1.0)

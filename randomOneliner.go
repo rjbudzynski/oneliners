@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-const urlBase = "https://budzynski.xyz/oneliners/"
+const urlBase = "https://raw.githubusercontent.com/rjbudzynski/oneliners/master/data/"
 
 func getURL(url string) string {
 	resp, err := http.Get(url)

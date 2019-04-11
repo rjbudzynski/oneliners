@@ -2,7 +2,7 @@
 
 "use strict";
 const fetch = require('node-fetch');
-const urlBase = "https://budzynski.xyz/oneliners/";
+const urlBase = "https://raw.githubusercontent.com/rjbudzynski/oneliners/master/data/";
 
 let len = 0,
     r = Math.random(),
