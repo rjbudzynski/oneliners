@@ -4,39 +4,15 @@
 const fetch = require('node-fetch');
 const urlBase = "https://raw.githubusercontent.com/rjbudzynski/oneliners/master/data/";
 
-let len = 0,
-    r = Math.random(),
-    index = 0,
-    text = "no oneliner for you...";
+function getResponseBody(response) {
+    if (!response.ok) {
+        throw new Error(`${response.url}: ${response.status} ${response.statusText}`);
+    }
+    return response.text()
+}
 
-fetch(urlBase + "len").
-    then((response) => {
-        if (response.ok) {
-            return response.text();
-        } else {
-            throw new Error(`${response.url}: ${response.status} ${response.statusText}`);
-        }
-    }
-    ).
-    then((s) => {
-        len = parseInt(s);
-        index = Math.floor(r * len);
-        return fetch(urlBase + index);
-    }
-    ).
-    then((response) => {
-        if (response.ok) {
-            return response.text();
-        } else {
-            throw new Error(`${response.url}: ${response.status} ${response.statusText}`);
-        }
-    }
-    ).
-    then((s) => {
-        text = s;
-        console.log(text);
-    }
-    ).
-    catch(function (err) {
-        console.log(err);
-    })
+(async function printRandomOneliner() {
+    const len = await fetch(urlBase + "len").then(getResponseBody).then(parseInt);
+    const index = Math.floor(len * Math.random());
+    fetch(urlBase + index).then(getResponseBody).then(console.log);
+})();
