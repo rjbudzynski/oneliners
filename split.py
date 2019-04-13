@@ -8,11 +8,11 @@ except IndexError:
     exit(f'{sys.argv[0]}: data file name required.')
 if os.path.exists('data'):
     shutil.rmtree('data')
-os.mkdir('oneliners')
+os.mkdir('data')
 
 with open(arg) as lines:
     for k, line in enumerate(lines):
-        with open(f'oneliners/{k}', 'w') as f:
+        with open(f'data/{k}', 'w') as f:
             f.write(line.strip())
 with open(f'data/len', 'w') as f:
     f.write(str(k + 1))
