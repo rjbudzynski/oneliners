@@ -25,7 +25,7 @@
 
 - python: the most terse and easy to understand code
 - golang: man, error handling in go is a drag. Exceptions are not such a dumb idea after all. And the executables are *huge* (even when stripped)
-- javascript (node.js): all that asynchronicity can be a headache when the task you want to perform is in reality synchroneous.
+- javascript (node.js): all that asynchronicity can be a headache when the task you want to perform is in reality synchronous.
 
 ## Notes:
 
