@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta charset="utf-8">
-  <title>random oneliner demo</title>
-  <style>
-    body{
-        max-width: 40rem;
-        margin: auto;
-        font: 18px/1.6 serif;
-    }
-    h1{
-        font-family: sans-serif;
-    }
-    .oneliner{
-        font: italic 80% sans-serif;
-        border-top: 1px dashed black;
-        padding: 0.5rem;
-    }
-    
-  </style>
-  <h1>random oneliner demo</h1>
-  <p>
-    Here is some body text, put here for the only purpose that the body not be
-    empty.
-  </p>
-  <script>
-    (async function printRandomOneliner() {
-        function getResponseBody(response) {
-            if (!response.ok) {
-                throw new Error(`${response.url}: ${response.status} ${response.statusText}`);
-            }
-        return response.text()
+    <meta charset="utf-8" />
+    <title>random oneliner demo</title>
+    <style>
+        body {
+            max-width: 40rem;
+            margin: auto;
+            font: 18px/1.6 serif;
         }
-        const urlBase = "https://raw.githubusercontent.com/rjbudzynski/oneliners/master/data/";
-        const len = await fetch(urlBase + "len").then(getResponseBody).then(parseInt);
-        const index = Math.floor(len * Math.random());
-        const text = await fetch(urlBase + index).then(getResponseBody);
-        const oneliner = document.createElement('p');
-        oneliner.className = 'oneliner';
-        oneliner.innerHTML = text;
-        document.body.appendChild(oneliner);
-    })();
-  </script>
+        h1 {
+            font-family: sans-serif;
+        }
+        .oneliner {
+            font: italic 80% sans-serif;
+            border-top: 1px dashed black;
+            padding: 0.5rem;
+        }
+    </style>
+    <h1>random oneliner demo</h1>
+    <p>
+        Here is some body text, put here for the only purpose that the body not
+        be empty.
+    </p>
+    <script type=module>
+        const getResponseBody = (response) => {
+                if (!response.ok) {
+                    throw new Error(`${response.url}: ${response.status} ${response.statusText}`);
+                }
+            return response.text();
+            };
+
+        window.addEventListener('load', async () => {
+            const urlBase = "https://raw.githubusercontent.com/rjbudzynski/oneliners/master/data/";
+            const len = await fetch(urlBase + "len").then(getResponseBody).then(parseInt);
+            const index = Math.floor(len * Math.random());
+            const text = await fetch(urlBase + index).then(getResponseBody);
+            const oneliner = document.createElement('p');
+            oneliner.className = 'oneliner';
+            oneliner.innerHTML = text;
+            document.body.appendChild(oneliner);
+        });
+    </script>
 </html>
